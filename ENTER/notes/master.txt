@@ -381,6 +381,877 @@ print(df.sort_values('labels'))
 
 
 
+In [1]: # Perform the necessary imports
+        from scipy.cluster.hierarchy import linkage, dendrogram
+        import matplotlib.pyplot as plt
+        
+        # Calculate the linkage: mergings
+        mergings = linkage(samples, method='complete')
+        
+        # Plot the dendrogram, using varieties as labels
+        dendrogram(mergings,
+                   labels=varieties,
+                   leaf_rotation=90,
+                   leaf_font_size=6,
+        )
+        plt.show()
+        
+        
+        print("Varieties:  ")
+        print(varieties)
+        
+        print("Samples:")
+        print(samples)
+
+
+Out:
+
+
+Varieties:  
+['Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Kama wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Rosa wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat', 'Canadian wheat']
+
+
+
+
+
+Samples:
+[[14.88   14.57    0.8811  5.554   3.333   1.018   4.956 ]
+ [14.69   14.49    0.8799  5.563   3.259   3.586   5.219 ]
+ [14.03   14.16    0.8796  5.438   3.201   1.717   5.001 ]
+ [13.99   13.83    0.9183  5.119   3.383   5.234   4.781 ]
+ [14.11   14.26    0.8722  5.52    3.168   2.688   5.219 ]
+ [13.02   13.76    0.8641  5.395   3.026   3.373   4.825 ]
+ [15.49   14.94    0.8724  5.757   3.371   3.412   5.228 ]
+ [16.2    15.27    0.8734  5.826   3.464   2.823   5.527 ]
+ [13.5    13.85    0.8852  5.351   3.158   2.249   5.176 ]
+ [15.36   14.76    0.8861  5.701   3.393   1.367   5.132 ]
+ [15.78   14.91    0.8923  5.674   3.434   5.593   5.136 ]
+ [14.46   14.35    0.8818  5.388   3.377   2.802   5.044 ]
+ [11.23   12.63    0.884   4.902   2.879   2.269   4.703 ]
+ [14.34   14.37    0.8726  5.63    3.19    1.313   5.15  ]
+ [16.84   15.67    0.8623  5.998   3.484   4.675   5.877 ]
+ [17.32   15.91    0.8599  6.064   3.403   3.824   5.922 ]
+ [18.72   16.19    0.8977  6.006   3.857   5.324   5.879 ]
+ [18.88   16.26    0.8969  6.084   3.764   1.649   6.109 ]
+ [18.76   16.2     0.8984  6.172   3.796   3.12    6.053 ]
+ [19.31   16.59    0.8815  6.341   3.81    3.477   6.238 ]
+ [17.99   15.86    0.8992  5.89    3.694   2.068   5.837 ]
+ [18.85   16.17    0.9056  6.152   3.806   2.843   6.2   ]
+ [19.38   16.72    0.8716  6.303   3.791   3.678   5.965 ]
+ [18.96   16.2     0.9077  6.051   3.897   4.334   5.75  ]
+ [18.14   16.12    0.8772  6.059   3.563   3.619   6.011 ]
+ [18.65   16.41    0.8698  6.285   3.594   4.391   6.102 ]
+ [18.94   16.32    0.8942  6.144   3.825   2.908   5.949 ]
+ [17.36   15.76    0.8785  6.145   3.574   3.526   5.971 ]
+ [13.32   13.94    0.8613  5.541   3.073   7.035   5.44  ]
+ [11.43   13.13    0.8335  5.176   2.719   2.221   5.132 ]
+ [12.01   13.52    0.8249  5.405   2.776   6.992   5.27  ]
+ [11.34   12.87    0.8596  5.053   2.849   3.347   5.003 ]
+ [12.02   13.33    0.8503  5.35    2.81    4.271   5.308 ]
+ [12.44   13.59    0.8462  5.319   2.897   4.924   5.27  ]
+ [11.55   13.1     0.8455  5.167   2.845   6.715   4.956 ]
+ [11.26   13.01    0.8355  5.186   2.71    5.335   5.092 ]
+ [12.46   13.41    0.8706  5.236   3.017   4.987   5.147 ]
+ [11.81   13.45    0.8198  5.413   2.716   4.898   5.352 ]
+ [11.27   12.86    0.8563  5.091   2.804   3.985   5.001 ]
+ [12.79   13.53    0.8786  5.224   3.054   5.483   4.958 ]
+ [12.67   13.32    0.8977  4.984   3.135   2.3     4.745 ]
+ [11.23   12.88    0.8511  5.14    2.795   4.325   5.003 ]]
+
+
+
+
+
+
+Mergings:
+[[33.         36.          0.27162909  2.        ]
+ [21.         26.          0.31365739  2.        ]
+ [18.         43.          0.32846589  3.        ]
+ [38.         41.          0.34657328  2.        ]
+ [19.         22.          0.37233454  2.        ]
+ [15.         27.          0.38916958  2.        ]
+ [ 4.         11.          0.48519909  2.        ]
+ [ 2.         13.          0.60220511  2.        ]
+ [23.         25.          0.64447995  2.        ]
+ [ 0.          9.          0.66671658  2.        ]
+ [32.         37.          0.68359363  2.        ]
+ [39.         42.          0.75541297  3.        ]
+ [12.         29.          0.76129577  2.        ]
+ [30.         34.          0.79066703  2.        ]
+ [24.         47.          0.89015184  3.        ]
+ [ 1.          6.          0.96077742  2.        ]
+ [31.         45.          0.98956619  3.        ]
+ [16.         50.          1.05891757  3.        ]
+ [17.         20.          1.11543099  2.        ]
+ [ 8.         40.          1.13733735  2.        ]
+ [44.         46.          1.1662041   5.        ]
+ [ 5.         61.          1.28676337  3.        ]
+ [35.         52.          1.37690488  3.        ]
+ [48.         49.          1.52865125  4.        ]
+ [53.         64.          1.66517195  6.        ]
+ [14.         56.          1.74234784  4.        ]
+ [51.         65.          1.91015424  6.        ]
+ [ 7.         57.          1.91749035  3.        ]
+ [28.         55.          2.08980038  3.        ]
+ [54.         58.          2.13385537  5.        ]
+ [ 3.         10.          2.22187038  2.        ]
+ [59.         67.          2.31852251  7.        ]
+ [60.         62.          2.33686195  7.        ]
+ [68.         69.          2.76779035  9.        ]
+ [66.         70.          3.13448417  9.        ]
+ [63.         71.          3.25744652  8.        ]
+ [73.         74.          3.71580316 14.        ]
+ [72.         75.          4.68116988 11.        ]
+ [76.         77.          5.45789312 17.        ]
+ [78.         79.          6.74608427 25.        ]
+ [80.         81.          9.61230238 42.        ]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+In chapter 1, you used k-means clustering to cluster companies according to their stock price movements. Now, you'll perform hierarchical clustering of the companies. You are given a NumPy array of price movements movements, where the rows correspond to companies, and a list of the company names companies. SciPy hierarchical clustering doesn't fit into a sklearn pipeline, so you'll need to use the normalize() function from sklearn.preprocessing instead of Normalizer.
+
+linkage and dendrogram have already been imported from scipy.cluster.hierarchy, and PyPlot has been imported as plt.
+
+Instructions
+0 XP
+Import normalize from sklearn.preprocessing.
+Rescale the price movements for each stock by using the normalize() function on movements.
+Apply the linkage() function to normalized_movements, using 'complete' linkage, to calculate the hierarchical clustering. Assign the result to mergings.
+Plot a dendrogram of the hierarchical clustering, using the list companies of company names as the labels. In addition, specify the leaf_rotation=90, and leaf_font_size=6 keyword arguments as you did in the previous exercise.
+Hint
+To import x from y, use the command from y import x.
+To rescale the price movements, use normalize(movements).
+Pass in normalized_movements and method='complete' as arguments to linkage() to perform the hierarchical clustering.
+To plot the dendrogram, you need to specify the following arguments inside dendrogram(): mergings, labels=companies, leaf_rotation=90, and leaf_font_size=6.
+
+Did you find this hint helpful?
+
+
+
+
+
+
+
+
+# Import normalize
+from sklearn.preprocessing import normalize
+
+# Normalize the movements: normalized_movements
+normalized_movements = normalize(movements)
+
+# Calculate the linkage: mergings
+mergings = linkage(normalized_movements, method='complete')
+
+# Plot the dendrogram
+dendrogram(
+    mergings,
+    labels=companies,
+    leaf_rotation=90,
+    leaf_font_size=6
+)
+plt.show()
+
+
+
+
+
+In [1]: # Import normalize
+        from sklearn.preprocessing import normalize
+        
+        # Normalize the movements: normalized_movements
+        normalized_movements = normalize(movements)
+        
+        # Calculate the linkage: mergings
+        mergings = linkage(normalized_movements, method='complete')
+        
+        # Plot the dendrogram
+        dendrogram(
+            mergings,
+            labels=companies,
+            leaf_rotation=90,
+            leaf_font_size=6
+        )
+        plt.show()
+
+In [2]: # Import normalize
+        from sklearn.preprocessing import normalize
+        
+        # Normalize the movements: normalized_movements
+        normalized_movements = normalize(movements)
+        
+        print("Normalized Movements:")
+        print(normalized_movements)
+        
+        
+        # Calculate the linkage: mergings
+        mergings = linkage(normalized_movements, method='complete')
+        
+        print("Mergings:")
+        print(mergings)
+        
+        
+        # Plot the dendrogram
+        dendrogram(
+            mergings,
+            labels=companies,
+            leaf_rotation=90,
+            leaf_font_size=6
+        )
+        plt.show()
+Normalized Movements:
+[[ 0.00302051 -0.00114574 -0.01775851 ... -0.02791349  0.00437463
+  -0.10202026]
+ [-0.02599391 -0.02639998 -0.00852927 ... -0.00162466 -0.01624623
+   0.02680614]
+ [-0.02208986  0.01184398 -0.02208986 ...  0.04502568 -0.01654394
+   0.03515588]
+ ...
+ [ 0.01981027  0.01059598  0.02626006 ... -0.01197837  0.01842816
+   0.02211388]
+ [ 0.0200991   0.00223323 -0.01786587 ... -0.0066997   0.00446647
+  -0.0066997 ]
+ [ 0.01796837  0.00112314  0.         ... -0.00673829  0.02919855
+   0.01123007]]
+Mergings:
+[[ 42.          49.           0.58499795   2.        ]
+ [ 12.          57.           0.67355098   2.        ]
+ [  5.          26.           0.69371159   2.        ]
+ [ 21.          48.           0.75062554   2.        ]
+ [ 52.          60.           0.78536856   3.        ]
+ [ 55.          62.           0.789767     3.        ]
+ [ 10.          61.           0.798409     3.        ]
+ [ 29.          36.           0.80409137   2.        ]
+ [ 46.          64.           0.84275997   4.        ]
+ [  7.          45.           0.8506084    2.        ]
+ [  8.          13.           0.85283926   2.        ]
+ [ 19.          37.           0.85471765   2.        ]
+ [ 32.          70.           0.87300001   3.        ]
+ [ 24.          51.           0.8766151    2.        ]
+ [ 44.          66.           0.87947223   4.        ]
+ [ 43.          68.           0.8815919    5.        ]
+ [ 34.          63.           0.88949572   3.        ]
+ [ 18.          65.           0.90608043   4.        ]
+ [  6.          71.           0.91712927   3.        ]
+ [  9.          40.           0.92637377   2.        ]
+ [ 28.          38.           0.95164161   2.        ]
+ [  4.          67.           0.95294663   3.        ]
+ [ 16.          72.           0.9595548    4.        ]
+ [ 69.          76.           0.96158158   5.        ]
+ [ 11.          33.           0.97566427   2.        ]
+ [ 27.          79.           0.97740201   3.        ]
+ [ 23.          82.           0.99331399   5.        ]
+ [  3.          77.           0.99786911   5.        ]
+ [ 25.          39.           1.00141064   2.        ]
+ [ 50.          73.           1.00524963   3.        ]
+ [ 75.          78.           1.01130797   8.        ]
+ [ 15.          83.           1.03345971   6.        ]
+ [ 14.          22.           1.04058548   2.        ]
+ [ 58.          74.           1.04108743   5.        ]
+ [ 47.          84.           1.04435325   3.        ]
+ [ 87.          91.           1.05365594  11.        ]
+ [ 86.          93.           1.0581736   10.        ]
+ [  2.          17.           1.06751133   2.        ]
+ [ 80.          85.           1.08256519   5.        ]
+ [ 88.          90.           1.09035689  10.        ]
+ [ 92.          94.           1.10877069   5.        ]
+ [ 30.          31.           1.11161487   2.        ]
+ [ 35.          96.           1.11559672  11.        ]
+ [ 20.          56.           1.12249023   2.        ]
+ [ 54.          81.           1.13818119   4.        ]
+ [ 41.          98.           1.14363871   6.        ]
+ [ 89.         100.           1.15395996   8.        ]
+ [103.         105.           1.16173517   8.        ]
+ [ 59.          97.           1.16210213   3.        ]
+ [ 95.         102.           1.1659596   22.        ]
+ [ 99.         101.           1.16654463  12.        ]
+ [ 53.         109.           1.17006356  23.        ]
+ [  1.         111.           1.19093094  24.        ]
+ [  0.         106.           1.19539219   9.        ]
+ [104.         110.           1.20338815  16.        ]
+ [108.         112.           1.23651064  27.        ]
+ [113.         115.           1.24673846  36.        ]
+ [107.         114.           1.26252729  24.        ]
+ [116.         117.           1.31619005  60.        ]]
+
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+Different linkage, different hierarchical clustering!
+
+In the video, you saw a hierarchical clustering of the voting countries at the Eurovision song contest using 'complete' linkage. 
+
+Now, perform a hierarchical clustering of the voting countries with 'single' linkage, and compare the resulting dendrogram with the one in the video.
+
+Different linkage, different hierarchical clustering!
+
+You are given an array samples. 
+
+Each row corresponds to a voting country, and each column corresponds to a performance that was voted for.
+
+The list country_names gives the name of each voting country. This dataset was obtained from Eurovision.
+
+
+
+Import linkage and dendrogram from scipy.cluster.hierarchy.
+Perform hierarchical clustering on samples using the linkage() function with the method='single' keyword argument. Assign the result to mergings.
+Plot a dendrogram of the hierarchical clustering, using the list country_names as the labels. In addition, specify the leaf_rotation=90, and leaf_font_size=6 keyword arguments as you have done earlier.
+Hint
+To import x from y, use the command from y import x, and to import x as the alias y, use the command import x as y.
+Pass in samples and method='single' as arguments to the linkage() function to perform hierarchical clustering with single linkage.
+To plot the dendrogram, you need to specify the following arguments inside dendrogram(): mergings, labels=country_names, leaf_rotation=90, and leaf_font_size=6
+
+
+
+
+
+In [1]: # Perform the necessary imports
+        import matplotlib.pyplot as plt
+        from scipy.cluster.hierarchy import linkage, dendrogram
+        
+        # Calculate the linkage: mergings
+        mergings = linkage(samples, method='single')
+        
+        # Plot the dendrogram
+        dendrogram(mergings,
+                   labels=country_names,
+                   leaf_rotation=90,
+                   leaf_font_size=6,
+        )
+        plt.show()
+        
+        
+        print(country_names)
+        
+        print("Mergings: \n", mergings)
+['Albania', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia & Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'F.Y.R. Macedonia', 'Finland', 'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Israel', 'Italy', 'Latvia', 'Lithuania', 'Malta', 'Moldova', 'Montenegro', 'Norway', 'Poland', 'Russia', 'San Marino', 'Serbia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'The Netherlands', 'Ukraine', 'United Kingdom']
+Mergings: 
+ [[10.         19.          6.78232998  2.        ]
+ [ 9.         35.          7.21110255  2.        ]
+ [22.         30.          8.          2.        ]
+ [25.         26.          8.36660027  2.        ]
+ [ 5.         40.          8.94427191  2.        ]
+ [ 6.         39.          9.2736185   2.        ]
+ [12.         21.          9.38083152  2.        ]
+ [33.         45.          9.79795897  3.        ]
+ [13.         49.          9.89949494  4.        ]
+ [ 7.         29.         10.48808848  2.        ]
+ [15.         31.         10.58300524  2.        ]
+ [44.         50.         10.86278049  6.        ]
+ [ 8.         42.         11.04536102  3.        ]
+ [37.         52.         11.22497216  3.        ]
+ [48.         55.         11.22497216  5.        ]
+ [17.         46.         11.22497216  3.        ]
+ [53.         56.         11.3137085  11.        ]
+ [41.         58.         11.40175425 12.        ]
+ [20.         59.         11.66190379 13.        ]
+ [43.         51.         12.          4.        ]
+ [28.         57.         12.08304597  4.        ]
+ [32.         62.         12.08304597  5.        ]
+ [14.         34.         13.11487705  2.        ]
+ [ 3.         60.         13.41640786 14.        ]
+ [61.         64.         13.56465997  6.        ]
+ [63.         65.         13.7113092  19.        ]
+ [18.         67.         14.07124728 20.        ]
+ [ 1.         68.         14.14213562 21.        ]
+ [11.         69.         14.14213562 22.        ]
+ [54.         70.         14.49137675 25.        ]
+ [ 4.         71.         14.62873884 26.        ]
+ [16.         23.         14.76482306  2.        ]
+ [38.         66.         15.87450787  7.        ]
+ [ 0.         72.         15.93737745 27.        ]
+ [73.         75.         16.55294536 29.        ]
+ [27.         76.         16.91153453 30.        ]
+ [74.         77.         17.20465053 37.        ]
+ [24.         78.         17.66352173 38.        ]
+ [36.         79.         17.72004515 39.        ]
+ [47.         80.         18.38477631 41.        ]
+ [ 2.         81.         19.79898987 42.        ]]
+
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+
+
+
+Extracting the cluster labels
+
+
+In the previous exercise, you saw that the intermediate clustering of the grain samples at height 6 has 3 clusters. 
+
+Now, use the fcluster() function to extract the cluster labels for this intermediate clustering, and compare the labels with the grain varieties using a cross-tabulation.
+
+The hierarchical clustering has already been performed and mergings is the result of the linkage() function. 
+
+The list varieties gives the variety of each grain sample.
+
+
+
+
+Import:
+pandas as pd.
+fcluster from scipy.cluster.hierarchy.
+Perform a flat hierarchical clustering by using the fcluster() function on mergings. Specify a maximum height of 6 and the keyword argument criterion='distance'.
+Create a DataFrame df with two columns named 'labels' and 'varieties', using labels and varieties, respectively, for the column values. This has been done for you.
+Create a cross-tabulation ct between df['labels'] and df['varieties'] to count the number of times each grain variety coincides with each cluster label.
+Hint
+To import x from y, use the command from y import x, and to import x as the alias y, use the command import x as y.
+Use fcluster() with the arguments mergings, 6, and criterion='distance' to perform the flat hierarchical clustering.
+To create the cross-tabulation, use pd.crosstab() with df['labels'] and df['varieties'] as arguments.
+
+
+
+
+In [1]: # Perform the necessary imports
+        import pandas as pd
+        from scipy.cluster.hierarchy import fcluster
+        
+        # Use fcluster to extract labels: labels
+        labels = fcluster(mergings, 6, criterion='distance')
+        
+        print("Labels: \n", labels)
+        
+        
+        # Create a DataFrame with labels and varieties as columns: df
+        df = pd.DataFrame({'labels': labels, 'varieties': varieties})
+        
+        # Create crosstab: ct
+        ct = pd.crosstab(df['labels'], df['varieties'])
+        
+        # Display ct
+        print(ct)
+Labels: 
+ [3 3 3 3 3 1 3 3 1 3 3 3 1 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1]
+varieties  Canadian wheat  Kama wheat  Rosa wheat
+labels                                           
+1                      14           3           0
+2                       0           0          14
+3                       0          11           0
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+
+
+
+
+t-SNE visualization of grain dataset
+In the video, you saw t-SNE applied to the iris dataset. In this exercise, you'll apply t-SNE to the grain samples data and inspect the resulting t-SNE features using a scatter plot. You are given an array samples of grain samples and a list variety_numbers giving the variety number of each grain sample.
+
+
+
+Import TSNE from sklearn.manifold.
+
+
+
+
+Create a TSNE instance called model with learning_rate=200.
+Apply the .fit_transform() method of model to samples. Assign the result to tsne_features.
+Select the column 0 of tsne_features. Assign the result to xs.
+Select the column 1 of tsne_features. Assign the result to ys.
+Make a scatter plot of the t-SNE features xs and ys. To color the points by the grain variety, specify the additional keyword argument c=variety_numbers.
+Hint
+To import x from y, use the command from y import x.
+Use TSNE() with the keyword argument learning_rate=200 to create the desired TSNE instance.
+Pass in samples as an argument to model.fit_transform() to fit the model to the data and then transform it.
+You can select column 0 of tsne_features using tsne_features[:,0], and column 1 using tsne_features[:,1].
+To create the scatter plot, use plt.scatter() with xs, ys, and c=variety_numbers as arguments.
+
+
+
+
+
+
+In [1]: # Import TSNE
+        from sklearn.manifold import TSNE
+        
+        # Create a TSNE instance: model
+        model = TSNE(learning_rate=200)
+        
+        print("Model:")
+        print(model)
+        
+        print(dir(model))
+        
+        
+        
+        # Apply fit_transform to samples: tsne_features
+        tsne_features = model.fit_transform(samples)
+        print("tsne_features  :\n", tsne_features)
+        
+        
+        # Select the 0th feature: xs
+        xs = tsne_features[:,0]
+        
+        # Select the 1st feature: ys
+        ys = tsne_features[:,1]
+        
+        # Scatter plot, coloring by variety_numbers
+        plt.scatter(xs, ys, c=variety_numbers)
+        plt.show()
+Model:
+TSNE(angle=0.5, early_exaggeration=12.0, init='random', learning_rate=200,
+     method='barnes_hut', metric='euclidean', min_grad_norm=1e-07,
+     n_components=2, n_iter=1000, n_iter_without_progress=300, perplexity=30.0,
+     random_state=None, verbose=0)
+['_EXPLORATION_N_ITER', '_N_ITER_CHECK', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_fit', '_get_param_names', '_get_tags', '_tsne', 'angle', 'early_exaggeration', 'fit', 'fit_transform', 'get_params', 'init', 'learning_rate', 'method', 'metric', 'min_grad_norm', 'n_components', 'n_iter', 'n_iter_without_progress', 'perplexity', 'random_state', 'set_params', 'verbose']
+tsne_features  :
+ [[ 4.21290779e+00 -4.91868854e-01]
+ [ 4.61933708e+00  2.16737556e+00]
+ [ 6.18396759e-01  7.09419727e-01]
+ [-3.84730510e-02  2.24296403e+00]
+ [ 6.23100901e+00 -6.88968971e-02]
+ [ 1.22902644e+00  8.42335165e-01]
+ [ 7.99311876e-01 -2.38034868e+00]
+ [ 9.29446425e-03  1.04637301e+00]
+ [ 6.92836142e+00 -2.28303242e+00]
+ [ 6.58034801e+00 -1.58400965e+00]
+ [ 2.68659616e+00 -5.64859343e+00]
+ [ 1.62693608e+00  2.62990832e+00]
+ [-1.64194000e+00 -1.66726518e+00]
+ [-1.14836287e+00  3.19484919e-01]
+ [-1.01502264e+00  1.00143456e+00]
+ [-5.77027440e-01 -3.07144094e+00]
+ [-1.34482403e+01  6.91558695e+00]
+ [ 5.45893621e+00  4.14892912e-01]
+ [ 2.53344727e+00  1.68601584e+00]
+ [-9.19657326e+00  7.57784462e+00]
+ [-2.98661459e-02 -5.56513846e-01]
+ [ 2.90019006e-01  4.11738187e-01]
+ [ 6.22290945e+00  1.04936802e+00]
+ [-4.73521423e+00  3.80244374e+00]
+ [ 4.17092180e+00  9.73300338e-01]
+ [ 6.64301872e+00  3.93694699e-01]
+ [-5.20247746e+00  6.58967113e+00]
+ [-3.58474088e+00  5.65716648e+00]
+ [-8.40235129e-02  4.91071820e-01]
+ [-2.27009392e+00  1.84397131e-01]
+ [-2.51734090e+00  3.33147931e+00]
+ [ 3.28490400e+00 -3.29794955e+00]
+ [-6.48009539e-01 -2.20274830e+00]
+ [ 7.04711199e-01  2.21599650e+00]
+ [ 3.76454568e+00 -2.16645654e-03]
+ [ 5.80849934e+00 -1.56969929e+00]
+ [ 5.69458485e+00 -3.01864314e+00]
+ [ 7.71251583e+00 -5.63120747e+00]
+ [ 1.51731730e+00 -1.62356174e+00]
+ [-1.55090542e+01  8.71013069e+00]
+ [-1.06256688e+00  2.21779227e+00]
+ [-7.25565791e-01  2.92332673e+00]
+ [-2.68261981e+00  4.91227579e+00]
+ [ 3.24532413e+00 -6.26127195e+00]
+ [ 2.27834153e+00 -2.18517065e+00]
+ [ 1.07051098e+00  3.15853858e+00]
+ [ 5.13882875e+00  1.14158177e+00]
+ [ 2.24002934e+00 -1.50283754e+00]
+ [ 2.02538610e+00 -5.85131586e-01]
+ [ 3.33840632e+00  3.68688583e-01]
+ [-1.24635935e-01 -2.62909293e+00]
+ [ 3.34698486e+00 -7.36189604e+00]
+ [ 2.78847218e-01 -3.26640511e+00]
+ [ 1.25307098e-01 -1.27682662e+00]
+ [ 3.52787304e+00  1.90267062e+00]
+ [ 4.06401825e+00  4.79534268e-01]
+ [ 1.03273630e+00 -2.13128522e-01]
+ [ 4.30324459e+00  2.11618876e+00]
+ [ 4.69249153e+00 -4.54727486e-02]
+ [-4.28247595e+00  3.75424814e+00]
+ [-6.62730026e+00  5.31540251e+00]
+ [-6.46700621e+00  4.72103834e+00]
+ [-6.67959404e+00  7.09068155e+00]
+ [-1.01716919e+01  6.58081484e+00]
+ [-3.36504555e+00  3.53258729e+00]
+ [-3.30477262e+00  5.09608746e+00]
+ [ 3.11312938e+00  2.70296812e+00]
+ [ 9.28398430e-01  1.78265059e+00]
+ [ 2.94578195e+00  2.38989830e+00]
+ [-5.96135283e+00  7.39010906e+00]
+ [ 7.98540449e+00 -8.76785851e+00]
+ [ 5.90436649e+00 -7.95133162e+00]
+ [ 6.61472082e+00 -8.39318848e+00]
+ [ 1.31037025e+01 -1.08359480e+01]
+ [ 6.44182539e+00 -7.16112804e+00]
+ [ 5.42396164e+00 -8.11371708e+00]
+ [ 7.62724733e+00 -7.92298269e+00]
+ [ 1.14165621e+01 -1.45768929e+01]
+ [ 9.30318260e+00 -1.28711338e+01]
+ [ 8.08918571e+00 -5.91687059e+00]
+ [ 4.56523561e+00 -8.12893581e+00]
+ [ 8.65863514e+00 -1.28217793e+01]
+ [ 1.03030586e+01 -1.43152723e+01]
+ [ 1.55411825e+01 -1.06931505e+01]
+ [ 1.34715939e+01 -1.18913288e+01]
+ [ 1.29992971e+01 -8.72205257e+00]
+ [ 1.50161104e+01 -9.25023556e+00]
+ [ 1.14626141e+01 -1.19972219e+01]
+ [ 1.03111582e+01 -1.52499752e+01]
+ [ 1.07534084e+01 -1.48972740e+01]
+ [ 1.50323429e+01 -1.18861399e+01]
+ [ 1.20125237e+01 -1.02048235e+01]
+ [ 1.18283205e+01 -1.06055050e+01]
+ [ 8.17945004e+00 -1.32329998e+01]
+ [ 8.77187729e+00 -1.20519257e+01]
+ [ 7.11459732e+00 -7.05635691e+00]
+ [ 1.23078909e+01 -1.21989479e+01]
+ [ 1.46851339e+01 -1.04036341e+01]
+ [ 1.18323002e+01 -8.81202507e+00]
+ [ 1.39972591e+01 -9.38972569e+00]
+ [ 5.43853283e+00 -6.78238583e+00]
+ [ 1.35005913e+01 -7.77566385e+00]
+ [ 1.06636581e+01 -1.28441525e+01]
+ [ 1.23874140e+01 -1.18247166e+01]
+ [ 1.18943653e+01 -1.12068281e+01]
+ [ 1.33633871e+01 -9.70959759e+00]
+ [ 1.27488871e+01 -9.99477291e+00]
+ [ 8.41183758e+00 -8.27092934e+00]
+ [ 1.31701946e+01 -1.30538673e+01]
+ [ 1.44887438e+01 -8.63577652e+00]
+ [ 1.36525869e+01 -8.68969154e+00]
+ [ 1.18206549e+01 -1.25789080e+01]
+ [ 1.44989347e+01 -9.82301140e+00]
+ [ 8.64067173e+00 -1.40454836e+01]
+ [ 1.11836042e+01 -1.49929371e+01]
+ [ 1.41765900e+01 -1.04179993e+01]
+ [ 1.01533966e+01 -1.21675444e+01]
+ [ 1.28177214e+01 -1.12959232e+01]
+ [ 1.10850363e+01 -1.11186333e+01]
+ [ 1.36735010e+01 -1.27472630e+01]
+ [ 9.71194458e+00 -1.46641340e+01]
+ [ 1.00874796e+01 -9.53389072e+00]
+ [ 4.85606146e+00 -6.79677677e+00]
+ [ 1.18517723e+01 -9.35352707e+00]
+ [ 4.08701944e+00 -3.70616269e+00]
+ [ 1.01381159e+01 -1.15248995e+01]
+ [ 9.62029266e+00 -1.17948742e+01]
+ [ 1.29185362e+01 -7.84350491e+00]
+ [ 1.53188648e+01 -1.16847248e+01]
+ [ 6.08539534e+00 -9.37882328e+00]
+ [ 1.22592945e+01 -8.75357151e+00]
+ [ 1.28355303e+01 -1.04345932e+01]
+ [ 3.42757368e+00 -5.78521299e+00]
+ [ 4.86847734e+00 -6.53411579e+00]
+ [ 3.52288628e+00 -6.64400578e+00]
+ [ 2.62162042e+00 -3.51023889e+00]
+ [ 8.12624836e+00 -7.50213003e+00]
+ [ 4.87289095e+00 -2.04532146e+00]
+ [ 4.72204351e+00 -2.21279502e+00]
+ [ 5.47453499e+00 -5.88164330e+00]
+ [-1.33517838e+01  8.16888714e+00]
+ [-1.54535923e+01  9.57587528e+00]
+ [-1.45096664e+01  8.62319851e+00]
+ [-1.27274752e+01  1.05421944e+01]
+ [-9.78143787e+00  1.03509054e+01]
+ [-1.35200539e+01  1.35044947e+01]
+ [-5.84918261e+00  4.59647560e+00]
+ [-1.00454874e+01  8.43262482e+00]
+ [-5.19052458e+00  7.31444311e+00]
+ [-1.18770113e+01  1.43752193e+01]
+ [-1.19188709e+01  1.13895340e+01]
+ [-1.50023384e+01  1.19786243e+01]
+ [-1.09117012e+01  9.28233814e+00]
+ [-6.41546869e+00  1.11512089e+01]
+ [-8.00973606e+00  1.15175285e+01]
+ [-1.27486935e+01  1.37819071e+01]
+ [-6.56712484e+00  1.06925335e+01]
+ [-1.08999271e+01  9.75397205e+00]
+ [-9.43208408e+00  1.04008141e+01]
+ [-1.21514206e+01  1.24930172e+01]
+ [-4.84638166e+00  7.50372696e+00]
+ [-9.24004650e+00  9.62028217e+00]
+ [-1.16309214e+01  1.04109249e+01]
+ [-1.04107275e+01  8.23000145e+00]
+ [-1.39348984e+01  1.38510771e+01]
+ [-4.97664165e+00  4.77626753e+00]
+ [-1.16594658e+01  9.01544762e+00]
+ [-6.80344439e+00  8.56223011e+00]
+ [-8.83482647e+00  1.18543663e+01]
+ [-6.94556570e+00  1.13018866e+01]
+ [-1.44783907e+01  1.35190382e+01]
+ [-1.44596891e+01  1.28081779e+01]
+ [-8.53982162e+00  1.23742714e+01]
+ [-1.23508520e+01  1.31440048e+01]
+ [-1.09685011e+01  1.40814142e+01]
+ [-9.54684734e+00  1.42110748e+01]
+ [-1.16287146e+01  1.32859879e+01]
+ [-9.44258118e+00  1.37681217e+01]
+ [-1.30813560e+01  1.29558430e+01]
+ [-4.36974335e+00  4.12664032e+00]
+ [-1.06503134e+01  1.28393641e+01]
+ [-1.20679960e+01  9.22784901e+00]
+ [-1.14245205e+01  9.87554169e+00]
+ [-1.16467943e+01  1.21771860e+01]
+ [-1.44703827e+01  9.34175968e+00]
+ [-8.33152866e+00  1.07240343e+01]
+ [-1.09092178e+01  1.08516693e+01]
+ [-8.21165371e+00  1.32491655e+01]
+ [-1.51866608e+01  1.30209112e+01]
+ [-1.00494871e+01  1.47562532e+01]
+ [-1.14535646e+01  1.41199837e+01]
+ [-7.59314394e+00  1.20625362e+01]
+ [-7.02631569e+00  9.68329144e+00]
+ [-1.01313438e+01  1.37861290e+01]
+ [-8.62069798e+00  9.06860733e+00]
+ [-1.19452181e+01  8.13940144e+00]
+ [-1.32315502e+01  9.01533127e+00]
+ [-1.18537893e+01  6.98899746e+00]
+ [-5.50135565e+00  7.52128887e+00]
+ [-4.17479801e+00  6.05412579e+00]
+ [-1.29228954e+01  9.83736610e+00]
+ [-3.88166738e+00  5.05658817e+00]
+ [-7.60649347e+00  1.26777172e+01]
+ [-1.59221869e+01  1.10000095e+01]
+ [-8.18134594e+00  8.17868996e+00]
+ [-7.30214310e+00  8.39992142e+00]
+ [-8.65320206e+00  1.26710072e+01]
+ [-1.59412556e+01  1.05975113e+01]
+ [-7.21545362e+00  9.52897263e+00]
+ [-1.32648659e+01  1.03891230e+01]]
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+
+A t-SNE map of the stock market
+t-SNE provides great visualizations when the individual samples can be labeled. In this exercise, you'll apply t-SNE to the company stock price data. A scatter plot of the resulting t-SNE features, labeled by the company names, gives you a map of the stock market! The stock price movements for each company are available as the array normalized_movements (these have already been normalized for you). The list companies gives the name of each company. PyPlot (plt) has been imported for you.
+
+
+
+Import TSNE from sklearn.manifold.
+
+
+Create a TSNE instance called model with learning_rate=50.
+Apply the .fit_transform() method of model to normalized_movements. Assign the result to tsne_features.
+Select column 0 and column 1 of tsne_features.
+Make a scatter plot of the t-SNE features xs and ys. Specify the additional keyword argument alpha=0.5.
+Code to label each point with its company name has been written for you using plt.annotate(), so just hit 'Submit Answer' to see the visualization!
+Hint
+
+
+To import x from y, use the command from y import x.
+
+
+Use TSNE() with the keyword argument learning_rate=50 to create the desired TSNE instance.
+Pass in normalized_movements as an argument to model.fit_transform() to fit the model to the data and then transform it.
+You can select column 0 of tsne_features using tsne_features[:,0], and column 1 using tsne_features[:,1].
+To create the scatter plot, use plt.scatter() with xs, ys, and alpha=0.5 as arguments.
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+
+
+companies:
+
+In [1]: # Import TSNE
+        from sklearn.manifold import TSNE
+        
+        # Create a TSNE instance: model
+        model = TSNE(learning_rate=50)
+        
+        print(model)
+        
+        
+        # Apply fit_transform to normalized_movements: tsne_features
+        tsne_features = model.fit_transform(normalized_movements)
+        
+        # Select the 0th feature: xs
+        xs = tsne_features[:,0]
+        
+        # Select the 1th feature: ys
+        ys = tsne_features[:,1]
+        
+        # Scatter plot
+        plt.scatter(xs, ys, alpha=0.5)
+        
+        # Annotate the points
+        for x, y, company in zip(xs, ys, companies):
+            plt.annotate(company, (x, y), fontsize=5, alpha=0.75)
+        plt.show()
+TSNE(angle=0.5, early_exaggeration=12.0, init='random', learning_rate=50,
+     method='barnes_hut', metric='euclidean', min_grad_norm=1e-07,
+     n_components=2, n_iter=1000, n_iter_without_progress=300, perplexity=30.0,
+     random_state=None, verbose=0)
+
+
 
 
 

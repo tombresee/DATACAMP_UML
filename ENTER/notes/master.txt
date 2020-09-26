@@ -1256,3 +1256,561 @@ TSNE(angle=0.5, early_exaggeration=12.0, init='random', learning_rate=50,
 
 
 
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+
+
+Correlated data in nature
+
+You are given an array grains giving the width and length of samples of grain. 
+
+You suspect that width and length will be correlated. To confirm this, make a scatter plot of width vs length and measure their Pearson correlation.
+
+
+
+matplotlib.pyplot as plt.
+pearsonr from scipy.stats.
+Assign column 0 of grains to width and column 1 of grains to length.
+Make a scatter plot with width on the x-axis and length on the y-axis.
+Use the pearsonr() function to calculate the Pearson correlation of width and length.
+Hint
+To import x from y, use the command from y import x, and to import x as the alias y, use the command import x as y.
+You can select column 0 of grains using grains[:,0], and column 1 using grains[:,1].
+Use plt.scatter() with width and length as arguments to create the scatter plot.
+Use pearsonr() with width and length as arguments to calculate the Pearson correlation.
+
+
+
+
+
+In [1]: # Perform the necessary imports
+        import matplotlib.pyplot as plt
+        from scipy.stats import pearsonr
+        
+        # Assign the 0th column of grains: width
+        width = grains[:,0]
+        
+        # Assign the 1st column of grains: length
+        length = grains[:,1]
+        
+        # Scatter plot width vs length
+        plt.scatter(width, length)
+        plt.axis('equal')
+        plt.show()
+        
+        # Calculate the Pearson correlation
+        correlation, pvalue = pearsonr(width, length)
+        
+        # Display the correlation
+        print(correlation)
+0.8604149377143466
+
+
+In [2]: # Perform the necessary imports
+        import matplotlib.pyplot as plt
+        from scipy.stats import pearsonr
+        
+        # Assign the 0th column of grains: width
+        width = grains[:,0]
+        
+        # Assign the 1st column of grains: length
+        length = grains[:,1]
+        
+        # Scatter plot width vs length
+        plt.scatter(width, length)
+        plt.axis('equal')
+        plt.show()
+        
+        # Calculate the Pearson correlation
+        correlation, pvalue = pearsonr(width, length)
+        
+        print(correlation,pvalue)
+        
+        
+        # Display the correlation
+        print(correlation)
+0.8604149377143466 8.121332906193694e-63
+0.8604149377143466
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+
+
+Decorrelating the grain measurements with PCA
+You observed in the previous exercise that the width and length measurements of the grain are correlated. Now, you'll use PCA to decorrelate these measurements, then plot the decorrelated points and measure their Pearson correlation.
+
+
+Import PCA from sklearn.decomposition.
+Create an instance of PCA called model.
+Use the .fit_transform() method of model to apply the PCA transformation to grains. Assign the result to pca_features.
+The subsequent code to extract, plot, and compute the Pearson correlation of the first two columns pca_features has been written for you, so hit 'Submit Answer' to see the result!
+Hint
+To import x from y, use the command from y import x.
+To create an instance of the PCA class, use PCA().
+Apply the .fit_transform() method on model with grains as the argument to apply the PCA transformation to the data.
+
+
+
+
+In [1]: # Import PCA
+        from sklearn.decomposition import PCA
+        
+        # Create PCA instance: model
+        model = PCA()
+        
+        # Apply the fit_transform method of model to grains: pca_features
+        pca_features = model.fit_transform(grains)
+        
+        # Assign 0th column of pca_features: xs
+        xs = pca_features[:,0]
+        
+        # Assign 1st column of pca_features: ys
+        ys = pca_features[:,1]
+        
+        # Scatter plot xs vs ys
+        plt.scatter(xs, ys)
+        plt.axis('equal')
+        plt.show()
+        
+        # Calculate the Pearson correlation of xs and ys
+        correlation, pvalue = pearsonr(xs, ys)
+        
+        # Display the correlation
+        print(correlation)
+2.5478751053409354e-17
+
+In [2]: # Import PCA
+        from sklearn.decomposition import PCA
+        
+        # Create PCA instance: model
+        model = PCA()
+        print(model)
+        
+        # Apply the fit_transform method of model to grains: pca_features
+        pca_features = model.fit_transform(grains)
+        print(pca_features)
+        
+        
+        # Assign 0th column of pca_features: xs
+        xs = pca_features[:,0]
+        
+        # Assign 1st column of pca_features: ys
+        ys = pca_features[:,1]
+        
+        # Scatter plot xs vs ys
+        plt.scatter(xs, ys)
+        plt.axis('equal')
+        plt.show()
+        
+        # Calculate the Pearson correlation of xs and ys
+        correlation, pvalue = pearsonr(xs, ys)
+        
+        # Display the correlation
+        print(correlation)
+PCA(copy=True, iterated_power='auto', n_components=None, random_state=None,
+    svd_solver='auto', tol=0.0, whiten=False)
+[[ 1.37546375e-01  4.48701536e-02]
+ [-9.77931663e-03 -1.04853394e-01]
+ [-2.09502378e-01 -2.76013257e-01]
+ [-1.57279093e-01 -2.87226133e-01]
+ [ 2.16563481e-01 -2.14516232e-01]
+ [-1.52413159e-01 -1.96070646e-01]
+ [-5.01506254e-02 -4.21863576e-02]
+ [-1.32653965e-01 -1.66650003e-01]
+ [ 4.58374510e-01  1.12533346e-01]
+ [ 3.53956661e-01 -2.62395364e-02]
+ [ 5.51223081e-02  6.73928808e-02]
+ [-1.83358870e-01 -7.74647317e-02]
+ [-1.83867947e-01 -7.52873846e-02]
+ [-1.80584321e-01 -1.66510665e-02]
+ [-2.05119162e-01  1.75694184e-02]
+ [-1.65911373e-01 -2.34590748e-01]
+ [-3.12392996e-01 -4.21318181e-01]
+ [ 8.51314987e-02 -2.61320442e-01]
+ [-1.93203059e-01 -4.30192803e-01]
+ [-4.43556277e-01 -9.60472265e-02]
+ [-6.01669339e-02  1.18514214e-01]
+ [-1.41381057e-01  3.22563195e-04]
+ [ 1.50648029e-01 -1.97778454e-01]
+ [-6.13453283e-01 -9.03020125e-02]
+ [ 1.14723866e-01  1.13018030e-01]
+ [ 2.61046944e-01  5.77271824e-03]
+ [-3.28273723e-01  2.96505572e-02]
+ [-3.73010742e-01  8.34891973e-02]
+ [-9.13571509e-02 -2.70198731e-02]
+ [-2.10284878e-01  7.69858755e-02]
+ [-3.15489555e-01  1.06582768e-01]
+ [ 1.70638550e-01 -4.34273038e-03]
+ [ 2.16400636e-02  1.12381094e-01]
+ [-1.02891839e-01  5.57083022e-02]
+ [ 1.08546684e-01 -2.99347942e-05]
+ [ 2.06578055e-01 -1.22699614e-01]
+ [ 2.83144391e-01 -3.17732911e-02]
+ [ 4.27722090e-01 -1.96376721e-01]
+ [ 3.99117613e-02 -5.05461242e-03]
+ [-1.52900204e-01 -1.78272815e-01]
+ [-2.81339490e-01 -1.00373201e-01]
+ [-2.77753919e-01 -9.99941473e-02]
+ [-4.14095899e-01 -2.69194811e-01]
+ [ 2.78910868e-01  5.31212157e-02]
+ [ 9.18927033e-02 -1.88092810e-01]
+ [-2.60443134e-01 -8.17092704e-02]
+ [ 1.41627844e-01 -5.70530607e-02]
+ [ 3.06470699e-02 -1.28469221e-01]
+ [-4.35436386e-02 -7.83021121e-02]
+ [ 3.76594689e-02  3.20792963e-02]
+ [-2.49216065e-02 -3.81247563e-02]
+ [ 1.47064622e-01 -1.05842828e-01]
+ [-2.65525026e-02  1.67248904e-01]
+ [-1.33874924e-01 -3.37458674e-02]
+ [-6.55529344e-03  1.83865510e-01]
+ [ 2.67198190e-02  8.27973805e-02]
+ [-1.09333394e-01 -2.44785469e-01]
+ [-9.00413789e-02 -2.74261190e-01]
+ [ 1.28248637e-01 -1.01975180e-01]
+ [-5.05952251e-01 -1.25791846e-01]
+ [-7.38406138e-01 -8.23155216e-02]
+ [-8.01399314e-01 -1.72364729e-01]
+ [-5.63398494e-01 -1.86528402e-01]
+ [-3.00153312e-01 -4.19087375e-03]
+ [-4.30567140e-01 -5.53497781e-02]
+ [-4.65732997e-01 -2.05487590e-01]
+ [-4.27172738e-02  5.37028769e-02]
+ [-7.93200743e-02  6.48937211e-02]
+ [-1.13280513e-01  4.31753276e-02]
+ [-4.07229063e-01  1.51269036e-01]
+ [ 6.25867169e-01  1.26893333e-01]
+ [ 4.28215627e-01  6.27694858e-02]
+ [ 4.83134187e-01 -3.46160968e-02]
+ [ 8.33237600e-01 -1.80559923e-01]
+ [ 4.44107172e-01  7.33741440e-02]
+ [ 3.44209251e-01  5.27730448e-02]
+ [ 4.27210651e-01  1.67249101e-01]
+ [ 1.08597943e+00  1.80276008e-01]
+ [ 8.71074341e-01  2.29233173e-01]
+ [ 3.66791581e-01 -9.48854747e-02]
+ [ 3.22748740e-01 -2.76474843e-03]
+ [ 6.72753013e-01 -2.19000752e-01]
+ [ 8.91812152e-01 -4.60756417e-02]
+ [ 9.09158147e-01  8.79546402e-02]
+ [ 9.13847833e-01  5.41462559e-02]
+ [ 6.69541971e-01  4.61684193e-02]
+ [ 6.73308316e-01 -9.76224519e-02]
+ [ 9.70875286e-01  2.71856774e-01]
+ [ 1.22132764e+00  8.00337492e-03]
+ [ 1.12608636e+00 -6.98368343e-02]
+ [ 1.06898377e+00  2.03858788e-01]
+ [ 7.61442386e-01 -6.59935783e-02]
+ [ 7.72527402e-01  7.71361615e-02]
+ [ 6.98513140e-01 -2.01496014e-01]
+ [ 9.42629178e-01  4.88919339e-01]
+ [ 5.23240925e-01  1.69034215e-01]
+ [ 9.00371650e-01  3.12466384e-02]
+ [ 8.18549112e-01  2.98703312e-01]
+ [ 6.56081130e-01  2.15708402e-01]
+ [ 7.26011958e-01  5.01859583e-02]
+ [ 2.39064177e-01 -1.47712649e-01]
+ [ 4.79361352e-01 -1.67769263e-01]
+ [ 7.77417729e-01 -1.77536343e-01]
+ [ 8.39463171e-01  1.48358368e-01]
+ [ 7.93692656e-01  1.41121025e-02]
+ [ 6.51219720e-01 -1.44580880e-01]
+ [ 7.52450920e-01 -8.64668179e-02]
+ [ 5.12014870e-01  1.66860098e-02]
+ [ 1.12722116e+00  2.80854928e-01]
+ [ 6.68858809e-01  1.56965751e-02]
+ [ 6.94193656e-01 -8.67687629e-02]
+ [ 8.59002054e-01  2.15741735e-02]
+ [ 8.37647372e-01 -1.40490559e-01]
+ [ 7.90649209e-01  3.49864271e-02]
+ [ 1.18679420e+00  3.39155563e-02]
+ [ 8.99897783e-01  1.49169390e-01]
+ [ 7.32927578e-01 -2.21006177e-01]
+ [ 8.29731302e-01 -3.39526042e-02]
+ [ 7.86488468e-01 -1.00767311e-02]
+ [ 1.04731612e+00  9.22410775e-02]
+ [ 9.77517681e-01 -1.02276730e-01]
+ [ 5.25621077e-01  4.09938510e-02]
+ [ 1.84709771e-01 -1.34532039e-02]
+ [ 5.97793181e-01 -1.69472743e-01]
+ [ 2.45407414e-03 -4.18433279e-01]
+ [ 7.61180176e-01 -1.61124705e-01]
+ [ 7.19255080e-01  1.61587685e-01]
+ [ 5.43339635e-01 -1.05505476e-01]
+ [ 1.00901417e+00  1.69629451e-01]
+ [ 4.00661731e-01 -2.27963696e-01]
+ [ 5.86798453e-01 -1.57805869e-01]
+ [ 7.58440838e-01 -1.06192965e-01]
+ [ 2.02489898e-01  1.56042717e-01]
+ [ 2.53659818e-01  3.34391306e-02]
+ [ 2.08898605e-01 -2.06573923e-02]
+ [ 1.53594142e-02 -2.55588407e-01]
+ [ 5.98795795e-01  8.74961161e-02]
+ [ 2.06531632e-01  2.07507893e-01]
+ [ 1.73999285e-01  1.08965281e-01]
+ [ 3.23636871e-01 -8.52766638e-03]
+ [-2.89502428e-01  1.03473227e-01]
+ [-1.85943990e-01  8.68103947e-02]
+ [-3.02211651e-01 -1.11019691e-02]
+ [-4.97500746e-01 -3.42573057e-02]
+ [-5.49708687e-01  1.69395170e-01]
+ [-6.34147031e-01  2.16247769e-01]
+ [-6.92915536e-01  1.25808492e-01]
+ [-4.64428438e-01 -6.77599433e-03]
+ [-4.08692365e-01  1.12347849e-01]
+ [-6.29845251e-01  2.70529393e-01]
+ [-5.48670666e-01  8.83462803e-02]
+ [-4.80357555e-01  2.28322417e-01]
+ [-4.41621470e-01  1.86399683e-01]
+ [-6.75690712e-01  1.73926113e-01]
+ [-6.70677050e-01  9.74809485e-02]
+ [-6.64120814e-01  2.06943343e-01]
+ [-7.04434684e-01 -5.27868863e-02]
+ [-5.08630021e-01  2.45135141e-01]
+ [-5.12993568e-01  3.28621424e-01]
+ [-6.09806143e-01  2.26072289e-01]
+ [-3.79150550e-01  1.78501316e-01]
+ [-5.00929935e-01  1.67021706e-01]
+ [-5.41120470e-01  8.55188173e-02]
+ [-4.13027191e-01  3.46354997e-02]
+ [-7.71888382e-01 -3.73273087e-02]
+ [-6.05643041e-01 -9.03130281e-02]
+ [-4.69171038e-01  8.02958596e-02]
+ [-4.32142958e-01  1.89075091e-01]
+ [-7.25509650e-01  1.65033787e-01]
+ [-7.61616552e-01  7.39223632e-02]
+ [-5.89819950e-01  2.34878654e-01]
+ [-6.19311014e-01  2.31470377e-02]
+ [-7.32477986e-01  3.57262380e-02]
+ [-6.95560062e-01  6.64030508e-02]
+ [-6.64314767e-01  2.50988347e-01]
+ [-7.77706378e-01 -7.72666493e-02]
+ [-6.90976204e-01  1.39121606e-01]
+ [-7.65969083e-01  1.65218888e-01]
+ [-6.64914132e-01  9.83690796e-02]
+ [-4.42500749e-01  1.07658163e-01]
+ [-7.23270536e-01  2.77749574e-02]
+ [-4.56316251e-01 -6.50442741e-02]
+ [-5.22262586e-01  2.05774575e-02]
+ [-6.61493795e-01 -1.84054951e-02]
+ [-2.51361380e-01  9.35605837e-02]
+ [-5.72097064e-01  2.73008685e-01]
+ [-5.12550584e-01  2.79582625e-01]
+ [-7.88718810e-01  1.03409100e-01]
+ [-6.94641047e-01 -8.24382066e-03]
+ [-8.62503908e-01 -1.03522674e-01]
+ [-7.94179783e-01  4.42637047e-02]
+ [-7.03967505e-01  6.10947819e-03]
+ [-5.77207505e-01 -8.22868021e-02]
+ [-7.46718966e-01  1.96816879e-01]
+ [-4.83158462e-01 -3.27410900e-02]
+ [-4.45107703e-01 -1.97450348e-01]
+ [-4.41899023e-01 -1.01171044e-01]
+ [-3.20769754e-01 -9.67325526e-02]
+ [-3.90233402e-01  1.27686256e-01]
+ [-4.93487534e-01 -2.75356651e-01]
+ [-4.87286157e-01 -5.43735225e-02]
+ [-5.74721524e-01 -3.16854106e-01]
+ [-7.63201025e-01 -5.09114841e-02]
+ [-4.49786373e-01 -1.55831722e-01]
+ [-5.17356916e-01 -4.16554470e-02]
+ [-5.55467080e-01 -1.00626757e-01]
+ [-6.72032359e-01  4.43475020e-02]
+ [-3.18909694e-01 -2.30405812e-01]
+ [-6.18909928e-01  3.51819507e-02]
+ [-4.78413699e-01 -2.74982647e-02]]
+2.5478751053409354e-17
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################################################################
+
+
+
+
+
+
+The first principal component
+The first principal component of the data is the direction in which the data varies the most. In this exercise, your job is to use PCA to find the first principal component of the length and width measurements of the grain samples, and represent it as an arrow on the scatter plot.
+
+The array grains gives the length and width of the grain samples. PyPlot (plt) and PCA have already been imported for you.
+
+
+
+Make a scatter plot of the grain measurements. This has been done for you.
+Create a PCA instance called model.
+Fit the model to the grains data.
+Extract the coordinates of the mean of the data using the .mean_ attribute of model.
+Get the first principal component of model using the .components_[0,:] attribute.
+Plot the first principal component as an arrow on the scatter plot, using the plt.arrow() function. You have to specify the first two arguments - mean[0] and mean[1].
+Hint
+To create an instance of the PCA class, use PCA().
+Use model.fit(grains) to fit the model to the data.
+To access the .mean_ attribute of model, use model.mean_.
+To extract the first principal component of model, use model.components_[0,:].
+Inside plt.arrow(), you have to specify mean[0] and mean[1] to plot the first principal component as an arrow.
+
+
+
+
+In [1]: # Make a scatter plot of the untransformed points
+        plt.scatter(grains[:,0], grains[:,1])
+        
+        # Create a PCA instance: model
+        model = PCA()
+        
+        # Fit model to points
+        model.fit(grains)
+        
+        # Get the mean of the grain samples: mean
+        mean = model.mean_
+        
+        # Get the first principal component: first_pc
+        first_pc = model.components_[0,:]
+        
+        # Plot first_pc as an arrow, starting at mean
+        plt.arrow(mean[0], mean[1], first_pc[0], first_pc[1], color='red', width=0.01)
+        
+        # Keep axes on same scale
+        plt.axis('equal')
+        plt.show()
+
+In [2]: # Make a scatter plot of the untransformed points
+        plt.scatter(grains[:,0], grains[:,1])
+        
+        # Create a PCA instance: model
+        model = PCA()
+        
+        print(model)
+        
+        
+        # Fit model to points
+        model.fit(grains)
+        
+        print(dir(model))
+        
+        
+        
+        # Get the mean of the grain samples: mean
+        mean = model.mean_
+        
+        print("Mean :", mean)
+        
+        
+        
+        # Get the first principal component: first_pc
+        first_pc = model.components_[0,:]
+        
+        print("first pc: \n", first_pc)
+        
+        
+        # Plot first_pc as an arrow, starting at mean
+        plt.arrow(mean[0], mean[1], first_pc[0], first_pc[1], color='red', width=0.01)
+        
+        
+        # Keep axes on same scale
+        plt.axis('equal')
+        plt.show()
+PCA(copy=True, iterated_power='auto', n_components=None, random_state=None,
+    svd_solver='auto', tol=0.0, whiten=False)
+['__abstractmethods__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_abc_cache', '_abc_negative_cache', '_abc_negative_cache_version', '_abc_registry', '_fit', '_fit_full', '_fit_svd_solver', '_fit_truncated', '_get_param_names', '_get_tags', 'components_', 'copy', 'explained_variance_', 'explained_variance_ratio_', 'fit', 'fit_transform', 'get_covariance', 'get_params', 'get_precision', 'inverse_transform', 'iterated_power', 'mean_', 'n_components', 'n_components_', 'n_features_', 'n_samples_', 'noise_variance_', 'random_state', 'score', 'score_samples', 'set_params', 'singular_values_', 'svd_solver', 'tol', 'transform', 'whiten']
+Mean : [3.25860476 5.62853333]
+first pc: 
+ [0.63910027 0.76912343]
+
+
+
+
+
+
+
+
+
+
+Variance of the PCA features
+The fish dataset is 6-dimensional. But what is its intrinsic dimension? Make a plot of the variances of the PCA features to find out. As before, samples is a 2D array, where each row represents a fish. You'll need to standardize the features first.
+
+
+Create an instance of StandardScaler called scaler.
+Create a PCA instance called pca.
+Use the make_pipeline() function to create a pipeline chaining scaler and pca.
+Use the .fit() method of pipeline to fit it to the fish samples samples.
+Extract the number of components used using the .n_components_ attribute of pca. Place this inside a range() function and store the result as features.
+Use the plt.bar() function to plot the explained variances, with features on the x-axis and pca.explained_variance_ on the y-axis.
+Hint
+To create an instances of the classes - in this case, StandardScaler and PCA - you need to use StandardScaler() and PCA().
+Pass in scaler and pca as arguments to make_pipeline() to create the pipeline.
+Use pipeline.fit() with samples as the argument to fit the pipeline to the data.
+Use range(pca.n_components_) to get the number of components.
+Inside plt.bar(), specify features and pca.explained_variance_ as arguments.
+
+
+
+
+
+In [1]: # Perform the necessary imports
+        from sklearn.decomposition import PCA
+        from sklearn.preprocessing import StandardScaler
+        from sklearn.pipeline import make_pipeline
+        import matplotlib.pyplot as plt
+        
+        # Create scaler: scaler
+        scaler = StandardScaler()
+        
+        # Create a PCA instance: pca
+        pca = PCA()
+        print(pca)
+        
+        
+        # Create pipeline: pipeline
+        pipeline = make_pipeline(scaler, pca)
+        
+        # Fit the pipeline to 'samples'
+        pipeline.fit(samples)
+        
+        # Plot the explained variances
+        features = range(pca.n_components_)
+        plt.bar(features, pca.explained_variance_)
+        plt.xlabel('PCA feature')
+        plt.ylabel('variance')
+        plt.xticks(features)
+        plt.show()
+PCA(copy=True, iterated_power='auto', n_components=None, random_state=None,
+    svd_solver='auto', tol=0.0, whiten=False)
+
+
+
+
+
+
+
